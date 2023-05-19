@@ -1,0 +1,22 @@
+<div class="sub-form-textarea" [formGroup]="form.formGroup">
+  <label
+    class="sub-form-textarea__label"
+    [for]="uniqueId"
+    [ngClass]="{'sub-form-textarea__label--disabled': form.formGroup.disabled}"
+  >
+    <div class="sub-form-textarea__text">
+      <p>{{text}}</p>
+      <textarea
+        class="sub-form-textarea__textarea"
+        type="textarea"
+        [formControlName]="form.formControlNames.value"
+        [id]="uniqueId"
+        [placeholder]="placeholder ?? ''"
+        [rows]="rows"
+        (keypress)="handleKeypress($event.key)"
+        (focus)="handleFocus($event.target)"
+        (blur)="handleBlur()"
+      ></textarea>
+    </div>
+  </label>
+</div>

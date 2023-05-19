@@ -1,0 +1,46 @@
+<section class="products-container">
+  <app-button
+    [display]="'inline'"
+    [icon]="'fas fa-plus'"
+    [label]="'Crear'"
+    [type]="'static'"
+    (clicked)="modalRef.toggle()"
+  ></app-button>
+
+  <app-table
+    [headers]="[
+      ['', '0.5rem'],
+      ['Nombre', '7rem'],
+      ['Descripción', '10rem'],
+      ['Acciones', '3rem']
+    ]"
+    [items]="[]"
+    [itemTemplateRef]="channelTemplate"
+  ></app-table>
+
+  <ng-template #channelTemplate let-channel="item" let-index="index">
+    <td class="admin-channels-list-tmpl__td">
+      {{channel.name}}
+    </td>
+    <td class="admin-channels-list-tmpl__td admin-channels-list-tmpl__td--buttons">
+      <app-button
+        [display]="'block'"
+        [icon]="'fas fa-pen'"
+        [type]="'static'"
+        (clicked)="'handleLoadChannelToUpdate(channel.id); modalUpdateRef.toggle()'"
+      ></app-button>
+      <app-button
+        [display]="'block'"
+        [icon]="'fas fa-trash'"
+        [type]="'static'"
+        (clicked)="'modalDeleteRef.toggle(); setChannelId(channel.id)'"
+      ></app-button>
+    </td>
+  </ng-template>
+
+  <app-modal [auto]="true" #modalRef>
+    <div class="products-container__form">
+      <app-form-client></app-form-client>
+    </div>
+  </app-modal>
+</section>

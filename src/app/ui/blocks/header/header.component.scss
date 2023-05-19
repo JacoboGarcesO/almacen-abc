@@ -1,0 +1,20 @@
+@use "../../_styles/index.scss" as styles;
+
+.header {
+  width: 100%;
+  background-color: rgb(229, 204, 204);
+  padding: 15px;
+
+  &__items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  &__item {
+    font-size: 20px;
+    list-style: none;
+    cursor: pointer;
+  }
+}

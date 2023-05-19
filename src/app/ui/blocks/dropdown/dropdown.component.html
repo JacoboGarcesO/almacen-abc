@@ -1,0 +1,42 @@
+<div class="dropdown closest__{{uniqueId}}">
+  <label
+    class="dropdown__label"
+    tabindex="0"
+    [ngClass]="{'dropdown__label--focus': isVisible, 'dropdown__label--disabled': isDisabled}"
+    [attr.data-form]="tabid"
+    (click)="!isDisabled && toggleVisible()"
+    (keydown.space)="handleKeydown($event?.target)"
+  >
+    <i *ngIf="!!icon" class="dropdown__icon {{icon}}"></i>
+
+    <div class="dropdown__text">
+      <p>
+        {{label}}
+      </p>
+      <p class="dropdown__input" *ngIf="!options?.length">
+        {{text || placeholder}}
+      </p>
+      <div *ngIf="options" class="dropdown__options" [ngClass]="{ 'dropdown__options--active': options?.length > 2 }">
+        <span *ngFor="let option of options" class="dropdown__option">
+          <p
+            class="dropdown__text-option"
+          >{{option?.label}}</p>
+          <i class="dropdown__times-circle fas fa-times-circle" (click)="!isDisabled && handleDeselect(option?.id)"></i>
+        </span>
+      </div>
+    </div>
+
+    <i *ngIf="canDeleteText && text && !isDisabled" class="dropdown__times fas fa-times" (click)="!isDisabled && handleDeleteText()"></i>
+
+    <i *ngIf="!(canDeleteText && text) && !isDisabled" class="dropdown__caret fas fa-chevron-down" [ngClass]="{'dropdown__caret--reverse': isVisible}" (click)="!isDisabled && handleDeleteText()"></i>
+  </label>
+
+  <app-floating-card
+    class="dropdown__floating"
+    [isVisible]="isVisible"
+    (closed)="handleClose()"
+  >
+    <ng-content select="[header]" header></ng-content>
+    <ng-content></ng-content>
+  </app-floating-card>
+</div>

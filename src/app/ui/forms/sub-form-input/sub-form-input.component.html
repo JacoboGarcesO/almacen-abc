@@ -1,0 +1,21 @@
+<div class="sub-form-input" [formGroup]="form.formGroup">
+  <label
+    class="sub-form-input__label"
+    [for]="uniqueId"
+    [ngClass]="{'sub-form-input__label--disabled': form.formGroup.disabled}"
+  >
+    <div class="sub-form-input__text">
+      <p>{{label}}</p>
+      <input
+        class="sub-form-input__input"
+        [id]="uniqueId"
+        [formControlName]="form.formControlNames.value" 
+        [type]="type"
+        [placeholder]="placeholder ?? ''" 
+        (keypress)="handleKeypress($event.key)"
+        (focus)="handleFocus($event.target)"
+        (blur)="handleBlur()"
+      >
+    </div>
+  </label>
+</div>

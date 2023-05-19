@@ -1,0 +1,64 @@
+@use '../../_styles/index.scss' as styles;
+
+.button {
+  padding: styles.$box-pad-half styles.$box-pad-base;
+  border-radius: styles.$box-rad-medium;
+  border: none;
+  transition: styles.$animation-ease-1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: styles.$box-pad-half;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: styles.$color-typo-contrast;
+  background: rgba($color: #000000, $alpha: .2);
+
+  &__icon {
+    color: styles.$color-bg-white;
+    font-size: styles.$box-pad-base;
+  }
+
+  .text {
+    text-transform: uppercase !important;
+    color: styles.$color-typo-contrast !important;
+  }
+
+  &--active,
+  &:hover {
+    background-color: styles.$color-primary-color;
+  }
+
+  &--disabled {
+    background-color: styles.$color-bg-dark;
+    border-color: transparent;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: styles.$color-bg-dark;
+
+      .text {
+        color: styles.$color-typo-base;
+      }
+    }
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--blank {
+    border-radius: styles.$box-rad-rounded;
+    border: styles.$box-bor-solid transparent;
+
+    .text {
+      text-transform: uppercase !important;
+      color: styles.$color-typo-base !important;
+    }
+
+    &:hover {
+      background-color: transparent;
+      border: styles.$box-bor-solid transparent;
+    }
+  }
+}

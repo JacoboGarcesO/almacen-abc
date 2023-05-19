@@ -1,0 +1,23 @@
+<form class="form-product" [formGroup]="form.formGroup">
+  <fieldset class="form-product__section">
+    <app-sub-form-input
+      [type]="'input'"
+      [label]="'Nombre'"
+      [formControlName]="form.formControlNames.name"
+    ></app-sub-form-input>
+  </fieldset>
+
+  <fieldset class="form-product__description">
+    <app-sub-form-textarea
+      [text]="'Descripción'"
+      [formControlName]="form.formControlNames.description"
+    ></app-sub-form-textarea>
+  </fieldset>
+
+  <app-button
+    [label]="'Guardar'"
+    [type]="'static'"
+    [isDisabled]="form.formGroup.invalid || form.formGroup.disabled"
+    (clicked)="manualSave$.next()"
+  ></app-button>
+</form>

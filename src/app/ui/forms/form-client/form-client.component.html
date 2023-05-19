@@ -1,0 +1,36 @@
+<form class="form-product" [formGroup]="form.formGroup">
+  <fieldset class="form-product__section">
+    <app-sub-form-input
+      [type]="'input'"
+      [label]="'Nombre'"
+      [formControlName]="form.formControlNames.firstName"
+    ></app-sub-form-input>
+
+    <app-sub-form-input
+      [type]="'input'"
+      [label]="'Apellido'"
+      [formControlName]="form.formControlNames.lastName"
+    ></app-sub-form-input>
+
+    <app-sub-form-input
+      [type]="'number'"
+      [label]="'Número de teléfono'"
+      [pattern]="'[0-9]'"
+      [formControlName]="form.formControlNames.phone"
+    ></app-sub-form-input>
+
+    <app-sub-form-input
+      [type]="'number'"
+      [label]="'Dirección'"
+      [pattern]="'[0-9]'"
+      [formControlName]="form.formControlNames.address"
+    ></app-sub-form-input>
+  </fieldset>
+
+  <app-button
+    [label]="'Guardar'"
+    [type]="'static'"
+    [isDisabled]="form.formGroup.invalid || form.formGroup.disabled"
+    (clicked)="manualSave$.next()"
+  ></app-button>
+</form>
